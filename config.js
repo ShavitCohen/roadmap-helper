@@ -10,6 +10,23 @@ const config =
     },
     pages: [
       {
+        title: 'Group Members Names',
+        spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
+        sheetId: 'Group Members',
+        range: 'A2:Z1000',
+        workerIdentifierIndex: 0,
+        sectionTitle: {
+          index: 0,
+        },
+        fields: [
+          {
+            title: 'שם',
+            index: 0,
+            grid: 12,
+          }
+        ],
+      },
+      {
         title: 'כללי',
         spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
         sheetId: 'Group Members',
@@ -52,6 +69,43 @@ const config =
         ],
       },
       {
+        title: 'permutations names',
+        spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
+        sheetId: 'Group Members Names',
+        range: 'A2:Z1000',
+        workerIdentifierIndex: 0,
+        sectionTitle: {
+          index: 0,
+        },
+        fields: [
+          {
+            title: 'name',
+            index: 0,
+            grid: 12,
+          },
+          {
+            title: 'שם',
+            index: 1,
+            grid: 12,
+          },
+          {
+            title: 'id',
+            index: 2,
+            grid: 3,
+          },
+          {
+            title: 'email',
+            index: 3,
+            grid: 3,
+          },
+          {
+            title: 'name2',
+            index: 4,
+            grid: 3,
+          },
+        ],
+      },
+      {
         title: 'שביעות רצון מהמשימה',
         spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
         sheetId: 'satisfaction',
@@ -61,6 +115,16 @@ const config =
           index: 0,
         },
         fields: [
+          {
+            title: 'Email Address',
+            index: 1,
+            grid: 12,
+          },
+          {
+            title: 'שם העובד',
+            index: 2,
+            grid: 12,
+          },
           {
             title: 'שם הלקוח',
             index: 3,
