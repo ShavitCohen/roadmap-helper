@@ -1,12 +1,36 @@
 const config =
   {
-    menu: {
-      title: 'תפריט',
+    employees: {
+      title: 'permutations names',
       spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
-      sheetId: 'Group Members',
-      range: 'A2:A1000',
-      workerIdentifierIndex: [0,3,6],
-      index: 0,
+      sheetId: 'Group Members Names',
+      range: 'A2:Z1000',
+      employeeIdentifierIndex: 0,
+      sectionTitle: {
+        index: 0,
+      },
+      fields: [
+        {
+          title: 'name1',
+          index: 0,
+        },
+        {
+          title: 'name2',
+          index: 1,
+        },
+        {
+          title: 'name3',
+          index: 4,
+        },
+        {
+          title: 'id',
+          index: 2,
+        },
+        {
+          title: 'email',
+          index: 3,
+        },
+      ],
     },
     pages: [
       {
@@ -14,7 +38,7 @@ const config =
         spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
         sheetId: 'Group Members',
         range: 'A2:Z1000',
-        workerIdentifierIndex: 0,
+        employeeIdentifierIndex: 0,
         sectionTitle: {
           index: 0,
         },
@@ -23,7 +47,7 @@ const config =
             title: 'שם',
             index: 0,
             grid: 12,
-          }
+          },
         ],
       },
       {
@@ -31,7 +55,7 @@ const config =
         spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
         sheetId: 'Group Members',
         range: 'A2:Z1000',
-        workerIdentifierIndex: 0,
+        employeeIdentifierIndex: 0,
         sectionTitle: {
           index: 0,
         },
@@ -69,48 +93,11 @@ const config =
         ],
       },
       {
-        title: 'permutations names',
-        spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
-        sheetId: 'Group Members Names',
-        range: 'A2:Z1000',
-        workerIdentifierIndex: 0,
-        sectionTitle: {
-          index: 0,
-        },
-        fields: [
-          {
-            title: 'name',
-            index: 0,
-            grid: 12,
-          },
-          {
-            title: 'שם',
-            index: 1,
-            grid: 12,
-          },
-          {
-            title: 'id',
-            index: 2,
-            grid: 3,
-          },
-          {
-            title: 'email',
-            index: 3,
-            grid: 3,
-          },
-          {
-            title: 'name2',
-            index: 4,
-            grid: 3,
-          },
-        ],
-      },
-      {
         title: 'שביעות רצון מהמשימה',
         spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
         sheetId: 'satisfaction',
         range: 'A2:Z1000',
-        workerIdentifierIndex: 1,
+        employeeIdentifierIndex: 1,
         sectionTitle: {
           index: 0,
         },
