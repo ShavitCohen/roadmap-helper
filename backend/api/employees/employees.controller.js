@@ -20,8 +20,10 @@ const getEmployees = async (req, res) => {
     const employeesData = await getSheetData({ auth, page });
     const data = employeesData.reduce((acc, employeeArr) => {
       const obj = {
-        name: employeeArr[1],
+        group: employeeArr[0],
+        name: employeeArr[2],
         identifiers: employeeArr,
+
       };
       acc.push(obj);
       return acc;
@@ -40,7 +42,7 @@ const getData = async (req, res) => {
   try {
     const auth = await authorization();
     const pages = await Promise.all(pagesConfig.map(async (page) => {
-      const sheetData = await getSheetData({ page, auth, });
+      const sheetData = await getSheetData({ page, auth });
       return formatPage({ page, sheetData });
     }));
 

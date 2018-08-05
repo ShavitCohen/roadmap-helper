@@ -9,26 +9,29 @@ const config =
       sectionTitle: {
         index: 0,
       },
+      group: {
+        index: 5,
+      },
       fields: [
         {
           title: 'name1',
-          index: 0,
-        },
-        {
-          title: 'name2',
-          index: 1,
-        },
-        {
-          title: 'name3',
-          index: 4,
-        },
-        {
-          title: 'id',
           index: 2,
         },
         {
-          title: 'email',
+          title: 'name2',
+          index: 2,
+        },
+        {
+          title: 'name3',
+          index: 5,
+        },
+        {
+          title: 'id',
           index: 3,
+        },
+        {
+          title: 'email',
+          index: 4,
         },
       ],
     },
