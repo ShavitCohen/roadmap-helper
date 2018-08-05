@@ -1,0 +1,3 @@
+export const SET_USERS = 'SET_USERS';
+export const FETCH_COMPLETED = 'FETCH_COMPLETED';
+export const FETCH_REQUEST = 'FETCH_REQUEST';
