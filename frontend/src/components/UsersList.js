@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import UserListDetails from './UserListDetails';
+import UserListSection from './UserListSection';
 import { fetchUsers, fetchUserDetails } from '../store/actions';
 import List from '@material-ui/core/List';
 
@@ -11,13 +11,14 @@ class UsersList extends Component {
   }
   renderUserDetails () {
     const { users, fetchUserDetails } = this.props;
-    return users.map(user => (
-      <UserListDetails
-        title={user.name}
-        key={user.name}
-        onClick={() => fetchUserDetails(user)}
-      />
-   ));
+    return Object.keys(users).map(section => (
+        <UserListSection
+          key={section}
+          title={section}
+          users={users[section]}
+          fetch={fetchUserDetails}
+        />
+    ));
   }
   render() {
     return (
