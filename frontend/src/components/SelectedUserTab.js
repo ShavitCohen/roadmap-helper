@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const SelectedUserTab = ({ item }) => (
-  <Card style={{ marginBottom: 16 }}>
+  <Card>
     <CardContent>
       <Typography variant="headline" component="h1">{item.title}</Typography>
       {item.sections.map(section => (
