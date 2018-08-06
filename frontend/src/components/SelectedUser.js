@@ -1,21 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserCard from './UserCard';
+import SelectedUserTabs from './SelectedUserTabs';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const SelectedUser = ({ roadmap }) => {
   const { selected, isFetching } = roadmap;
-  const renderCards = () => (
-    selected.map(item => (
-      <UserCard key={item.title} item={item} />
-    ))
-  );
 
+  // handling loading/empty users list
   if ( roadmap.isFetching ) return <LinearProgress color="primary" />;
+  else if ( !roadmap.selected.length ) return <div>בחר מהרשימה בתפריט</div>;
+
   return (
     <div>
-      {renderCards()}
+      <SelectedUserTabs tabs={selected} />
     </div>
   )
 }

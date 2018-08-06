@@ -4,8 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-const UserCard = ({ item }) => (
-  <Card style={{ marginBottom: 16 }}>
+const SelectedUserTab = ({ item }) => (
+  <Card>
     <CardContent>
       <Typography variant="headline" component="h1">{item.title}</Typography>
       {item.sections.map(section => (
@@ -25,4 +25,4 @@ const UserCard = ({ item }) => (
   </Card>
 );
 
-export default UserCard;
+export default SelectedUserTab;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { groupBy } from '../../utils';
 import { SET_USERS, FETCH_COMPLETED, FETCH_REQUEST } from '../types';
 
 const API = "http://localhost:3333/api";
@@ -7,8 +8,8 @@ const API = "http://localhost:3333/api";
  Set init users list
 */
 const setUsers = (items) => ({
-  type: SET_USERS,
-  payload: items
+    type: SET_USERS,
+    payload: groupBy(items)
 });
 
 /*
