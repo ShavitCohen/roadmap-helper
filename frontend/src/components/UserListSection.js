@@ -2,9 +2,11 @@ import React from 'react';
 import UserListDetails from './UserListDetails';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
-const UserListSection  = ({ title, users, fetch }) => {
+const UserListSection  = ({ title, users, search, fetch }) => {
   const renderUsers = () => (
-    users.map(user => (
+    users
+    .filter(user => search == '' || user.name.includes(search) )
+    .map(user => (
       <UserListDetails
         title={user.name}
         key={user.name}
