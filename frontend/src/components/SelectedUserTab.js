@@ -1,28 +1,36 @@
 import React from 'react';
 
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Grid, Card, CardContent, Typography } from '@material-ui/core';
 
 const SelectedUserTab = ({ item }) => (
-  <Card>
-    <CardContent>
+  <Grid container spacing={24}>
+    <Grid item xs={12}>
       <Typography variant="headline" component="h1">{item.title}</Typography>
-      {item.sections.map(section => (
-        <div key={section.title.value}>
-          <Typography color="textSecondary">{section.title.value}</Typography>
-          {section.fields.map(field => {
-            if (!field.value) return;
-            return (
-              <Typography style={{ marginBottom: 16 }} key={field.index}>
-                {field.title}: {field.value}
-              </Typography>
-            )
-          })}
-        </div>
-      ))}
-    </CardContent>
-  </Card>
-);
+    </Grid>
+
+    {item.sections.reverse().map(section => (
+      <Grid item>
+        <Card>
+          <CardContent>
+            <Grid container key={section.title.value} spacing={8}>
+              <Grid item xs={12}>
+                <Typography color="textSecondary">{section.title.value}</Typography>
+              </Grid>
+              {
+                section.fields.map(field => field.value && (
+                  <Grid item xs={12} md={field.grid}>
+                    <Typography style={{ marginBottom: 16 }} key={field.index}>
+                      <strong>{field.title}:</strong> {field.value}
+                    </Typography>
+                  </Grid>
+                ))
+              }
+            </Grid>
+
+          </CardContent>
+        </Card>
+      </Grid>
+    ))}
+  </Grid>);
 
 export default SelectedUserTab;
