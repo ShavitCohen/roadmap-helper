@@ -7,8 +7,8 @@ const config = require('./../../config');
 const _filterDataByEmployee = ({ pages, identifiers }) =>
   pages.map(page => {
     const sections = page.sections.filter(section => {
-      const identifierField = section.fields.find(field => field.index === page.employeeIdentifierIndex);
-      return _.includes(identifiers, identifierField.value);
+      const identifierField = identifiers.find(identifier => identifier === section.rawData[page.employeeIdentifierIndex]);
+      return _.includes(identifiers, identifierField);
     });
     return { ...page, sections };
   });

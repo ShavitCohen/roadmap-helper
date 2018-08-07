@@ -29,12 +29,13 @@ const formatPage = ({ sheetData, page }) => {
   const sections = sheetData.map(section => {
     const formattedFields = fields.map(field => {
       const { title, grid, index } = field;
-      return { title, grid, value: section[index], index };
+      return { title, grid, value: section[index], index, rawData: section };
     });
 
     return {
       title: { ...sectionTitle, value: section[sectionTitle.index] },
       fields: formattedFields,
+      rawData: section,
     };
   });
   return {
