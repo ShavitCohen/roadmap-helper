@@ -37,23 +37,6 @@ const config =
     },
     pages: [
       {
-        title: 'Group Members Names',
-        spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
-        sheetId: 'Group Members',
-        range: 'A2:Z1000',
-        employeeIdentifierIndex: 0,
-        sectionTitle: {
-          index: 0,
-        },
-        fields: [
-          {
-            title: 'שם',
-            index: 0,
-            grid: 12,
-          },
-        ],
-      },
-      {
         title: 'כללי',
         spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
         sheetId: 'Group Members',
@@ -105,16 +88,6 @@ const config =
           index: 0,
         },
         fields: [
-          {
-            title: 'Email Address',
-            index: 1,
-            grid: 12,
-          },
-          {
-            title: 'שם העובד',
-            index: 2,
-            grid: 12,
-          },
           {
             title: 'שם הלקוח',
             index: 3,
@@ -169,6 +142,68 @@ const config =
             title: 'באיזו רמה מרגיש נוח לפנות למוביל',
             index: 14,
             grid: 3,
+          },
+        ],
+      },
+      {
+        title: 'שביעות רצון לקוח',
+        spreadsheetId: '1oFc-PN1nMLswFW40h-yKy5UVgko-aARRiIVnDtIZQo4',
+        sheetId: 'satisfaction_service',
+        range: 'A2:Z1000',
+        employeeIdentifierIndex: 4,
+        sectionTitle: {
+          index: 0,
+        },
+        fields: [
+          {
+            title: 'שם הלקוח',
+            index: 1,
+            grid: 6,
+          },
+          {
+            title: 'שם המעריך',
+            index: 2,
+            grid: 6,
+          },
+          {
+            title: 'פירוט',
+            index: 6,
+            grid: 12,
+          },
+          {
+            title: 'מידת שביעות רצון עם העבודה עם טיקל',
+            index: 5,
+            grid: 6,
+          },
+          {
+            title: 'פירוט',
+            index: 7,
+            grid: 6,
+          },
+          {
+            title: 'נקודות לשיפור מבחינה מקצועית',
+            index: 7,
+            grid: 6,
+          },
+          {
+            title: 'איך היית מגדיר את העובד מבחינת הניסיון',
+            index: 8,
+            grid: 6,
+          },
+          {
+            title: 'מידת שביעות הרצון מהעובד',
+            index: 9,
+            grid: 6,
+          },
+          {
+            title: 'פירוט',
+            index: 10,
+            grid: 6,
+          },
+          {
+            title: 'נקודות לשיפור מבחינת מתן השירות',
+            index: 11,
+            grid: 12,
           },
         ],
       },
