@@ -9,17 +9,17 @@ const SelectedUserTab = ({ item }) => (
     </Grid>
 
     {item.sections.reverse().map(section => (
-      <Grid item>
+      <Grid item key={section.title.value}>
         <Card>
           <CardContent>
-            <Grid container key={section.title.value} spacing={8}>
+            <Grid container spacing={8}>
               <Grid item xs={12}>
                 <Typography color="textSecondary">{section.title.value}</Typography>
               </Grid>
               {
                 section.fields.map(field => field.value && (
-                  <Grid item xs={12} md={field.grid}>
-                    <Typography style={{ marginBottom: 16 }} key={field.index}>
+                  <Grid item xs={12} md={field.grid} key={field.index}>
+                    <Typography style={{ marginBottom: 16 }}>
                       <strong>{field.title}:</strong> {field.value}
                     </Typography>
                   </Grid>
