@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/store2/2.7.0/store2.min.js"></script>
+    <script>
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[#&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
+
+      var id_token = getParameterByName('id_token');
+
+      store.set('token', id_token);
+
+      var url = window.location.href.split('callback.html')[0];
+      window.location = url + '#/app';
+
+    </script>
+</head>
+<body>
+<div>Loading...</div>
+
+</body>
+</html>

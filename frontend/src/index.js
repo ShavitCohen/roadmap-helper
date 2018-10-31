@@ -1,14 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
 
-import reducers from "./store/reducers";
-import App from './components/App';
+import configureStore, { history } from './redux/sotre';
 
-const store = createStore(
-  reducers,
-  applyMiddleware(thunk)
-);
+import App from './App';
 
-render(<App store={store} />, document.getElementById('app'));
+const store = configureStore();
+
+const getApp = () =>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>
+;
+
+render(getApp(), document.getElementById('app'));
+
+

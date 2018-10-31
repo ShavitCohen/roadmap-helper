@@ -1,26 +1,36 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const plugins = [
+  new CleanWebpackPlugin(['dist']),
+  new HtmlWebpackPlugin({ title: 'Octopus', template: './index.html' }),
+  new CopyWebpackPlugin([{
+    from: path.resolve('callback.html'),
+    to: path.resolve('dist'),
+    force: true,
+  }]),
+];
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
-       test: /\.(js|jsx)$/,
-       exclude: /node_modules/,
-       use: ['babel-loader']
-     }
-    ]
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+    ],
   },
-  plugins: [new HtmlWebpackPlugin({
-    title: 'Tikal Roadmaps',
-    template: './index.html',
-  })],
+  plugins,
   devServer: {
-    contentBase: './dist'
-  }
+    contentBase: './dist',
+  },
 };
