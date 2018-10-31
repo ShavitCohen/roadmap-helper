@@ -14,18 +14,21 @@ const _filterDataByEmployee = ({ pages, identifiers }) =>
   });
 
 const getEmployees = async (req, res) => {
+  const groupName = req.params.groupName;
   const page = config.employees;
   try {
     const auth = await authorization();
     const employeesData = await getSheetData({ auth, page });
+    const { groupIndex, displayNameIndex, identifiersIndex } = page;
     const data = employeesData.reduce((acc, employeeArr) => {
       const obj = {
-        group: employeeArr[0],
-        name: employeeArr[2],
-        identifiers: employeeArr,
-
+        group: employeeArr[groupIndex],
+        name: employeeArr[displayNameIndex],
+        identifiers: identifiersIndex.map(index => employeeArr[index]),
       };
-      acc.push(obj);
+      if (obj.group.toLowerCase() === groupName.toLowerCase()) {
+        acc.push(obj);
+      }
       return acc;
     }, []);
     res.json(data);
