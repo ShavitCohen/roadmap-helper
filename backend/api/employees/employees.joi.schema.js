@@ -1,19 +1,11 @@
 const Joi = require('joi');
 
-const get = {
-  params: {
-    groupName: Joi.string().required(),
-  },
-};
-
-const getData = {
-  query: {
-    identifiers: Joi.array().required(),
-  },
-
+const getEmployees = {
+  params: {},
+  query: {},
+  body: {},
 };
 
 module.exports = {
-  get,
-  getData,
+  getEmployees,
 };

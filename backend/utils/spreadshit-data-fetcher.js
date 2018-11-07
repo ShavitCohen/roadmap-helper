@@ -1,8 +1,8 @@
 const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 
-const getSheetData = async ({ page, auth }) => {
-  const { spreadsheetId, sheetId, range } = page;
+const getSheetData = async ({ topic, auth }) => {
+  const { spreadsheetId, sheetId, range } = topic;
   const request = {
     // The ID of the spreadsheet to retrieve data from.
     spreadsheetId,  // TODO: Update placeholder value.
@@ -24,28 +24,25 @@ const getSheetData = async ({ page, auth }) => {
   });
 };
 
-const formatPage = ({ sheetData, page }) => {
-  const { fields, title, sectionTitle, employeeIdentifierIndex } = page;
-  const sections = sheetData.map(section => {
-    const formattedFields = fields.map(field => {
-      const { title, grid, index } = field;
-      return { title, grid, value: section[index], index, rawData: section };
-    });
+const formatData = ({ sheetData, topic, userGroup, userRole }) => {
+  const { fields, title, sectionTitle } = topic;
 
-    return {
-      title: { ...sectionTitle, value: section[sectionTitle.index] },
-      fields: formattedFields,
-      rawData: section,
-    };
-  });
+  const formattedFields = fields.reduce((acc, field) => {
+    if (field.roles && !field.roles.includes(userRole)) return;
+    if (field.group && !field.group.includes(userGroup)) return;
+
+    const { title, grid, index } = field;
+    //acc.push({ title:sheetData[], grid, value: sheetData[index], index });
+    return acc;
+  }, []);
+
   return {
-    title,
-    sections,
-    employeeIdentifierIndex,
+    title: { ...sectionTitle, value: sheetData[sectionTitle.index] },
+    fields: formattedFields,
   };
 };
 
 module.exports = {
   getSheetData,
-  formatPage,
+  formatData,
 };

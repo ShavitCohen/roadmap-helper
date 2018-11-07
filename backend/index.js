@@ -4,10 +4,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const api = require('./api');
 const _ = require('lodash');
+
+const PORT = process.env.PORT || 3333;
+const whitelist = ['https://localhost:8080', 'http://localhost:8080'];
+const { tokenToUserMW } = require('./middlewares/token.middleware');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-const whitelist = ['http://localhost:3010', 'http://localhost:8080'];
 
 app.use(cors({
   origin: (origin, cb) => {
@@ -18,8 +21,12 @@ app.use(cors({
   },
 }));
 
-app.use('/api', api);
+app.use('/api', tokenToUserMW, api);
 
-const server = app.listen(3333, function () {
-  console.log('Server running at https://localhost:' + server.address().port);
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
