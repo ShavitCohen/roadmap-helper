@@ -9,7 +9,6 @@ export const authMiddleware = ({ dispatch, getState }) => (next) => (action) => 
   switch (true) {
     case action.type.includes(`${AUTH} ${AT.LOGOUT_USER}`): {
       store.remove('token');
-      store.remove('realTimeToken');
       dispatch([replace('/')]);
     }
       break;

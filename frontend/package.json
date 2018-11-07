@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development --open",
+    "start": "webpack-dev-server --mode development --env development --devtool inline-source-map --open",
     "build": "webpack --mode production"
   },
   "babel": {
@@ -24,9 +24,9 @@
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.6.0",
     "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.16.3",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
   },
   "dependencies": {
     "@material-ui/core": "^1.4.2",
@@ -39,7 +39,6 @@
     "react-router-dom": "^4.3.1",
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
     "store": "^2.0.12"
   }
 }

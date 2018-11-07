@@ -6,18 +6,22 @@ import { loggerMiddleware } from './core/logger.middleware';
 import { actionSplitterMiddleware } from './core/actionSplitter.middleware';
 import { apiMiddleware } from './core/api/api.middleware';
 import { authMiddleware } from './feature/auth/auth.middleware';
+import { employeesMiddleware } from './feature/employees/employees.middleware';
+import { topicsMiddleware } from './feature/topics/topics.middleware';
 
 const history = createHistory();
 const routeMiddleware = routerMiddleware(history);
 
 const coreMiddlewares = [
   actionSplitterMiddleware,
-  apiMiddleware,
   routeMiddleware,
+  apiMiddleware,
   loggerMiddleware,
 ];
 const appMiddlewares = [
   authMiddleware,
+  employeesMiddleware,
+  topicsMiddleware,
 ];
 
 const middlewares = [...coreMiddlewares, ...appMiddlewares];

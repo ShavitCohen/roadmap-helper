@@ -9,9 +9,10 @@ export const loginLock = container => new Auth0Lock(clientId, domain, {
     redirectUrl: `${clientURL}/callback.html`,    // If not specified, defaults to the current page
     responseType: 'token id_token',
     params: {
-      scope: 'openid email user_metadata app_metadata',                // Learn about scopes: https://auth0.com/docs/scopes
+      scope: 'openid email user_metadata app_metadata picture',                // Learn about scopes: https://auth0.com/docs/scopes
     },
   },
-  avatar: null,
   language: 'en',
+  disableSignupAction: true,
+
 });

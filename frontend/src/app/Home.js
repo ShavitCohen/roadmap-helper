@@ -1,12 +1,15 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 import Header from './Header';
 import SelectedUser from './SelectedUser';
-import UsersList from './UsersList';
+import EmployeesList from './EmployeesList/index';
 
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Login from '../containers/Login';
+import { getEmployees } from '../redux/feature/employees/employees.actions';
+import { getTopics } from '../redux/feature/topics/topics.actions';
 
 const styles = theme => ({
   root: {
@@ -34,12 +37,19 @@ class Home extends React.Component {
     groupName: null,
   };
 
-  onLogin = (groupName) => {
-    this.setState({ groupName });
+  componentDidMount() {
+    const { getEmployees, getTopics } = this.props;
+    getEmployees({});
+    getTopics({});
+  }
+
+  handleTopicClick = ({ topic, employee }) => {
+    console.log(topic, employee);
   };
 
-  render = () => {
+  render() {
     const { classes } = this.props;
+    const { employees, topics, topicData } = this.props;
     return <div>
       <Header />
 
@@ -49,11 +59,15 @@ class Home extends React.Component {
           style={{ borderLeft: '1px solid #ECECEC' }}
           classes={{ paper: classes.drawerPaper }}
         >
-          <UsersList groupName={this.state.groupName} />
+          <EmployeesList
+            employees={employees}
+            topics={topics}
+            onTopicClick={this.handleTopicClick}
+          />
         </Drawer>
 
         <main className={classes.content}>
-          <SelectedUser />
+          {/*<SelectedUser />*/}
         </main>
       </div>
 
@@ -62,4 +76,13 @@ class Home extends React.Component {
   };
 }
 
-export default withStyles(styles)(Home);
+const mapStateToProps = ({ employees: employeesStore, topics: topicsStore }) => {
+  const { employees } = employeesStore;
+  const { topics, topicData } = topicsStore;
+  return { employees, topics, topicData };
+};
+
+export default connect(mapStateToProps, {
+  getEmployees,
+  getTopics,
+})(withStyles(styles)(Home));
