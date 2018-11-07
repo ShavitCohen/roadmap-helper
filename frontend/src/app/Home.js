@@ -3,13 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Header from './Header';
-import SelectedUser from './SelectedUser';
 import EmployeesList from './EmployeesList/index';
 
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import { getEmployees } from '../redux/feature/employees/employees.actions';
-import { getTopics } from '../redux/feature/topics/topics.actions';
+import { getTopicData, getTopics } from '../redux/feature/topics/topics.actions';
+import TopicView from './TopicView';
 
 const styles = theme => ({
   root: {
@@ -35,6 +35,8 @@ const styles = theme => ({
 class Home extends React.Component {
   state = {
     groupName: null,
+    selectedTopic: {},
+    selectedEmployee: {},
   };
 
   componentDidMount() {
@@ -44,12 +46,20 @@ class Home extends React.Component {
   }
 
   handleTopicClick = ({ topic, employee }) => {
-    console.log(topic, employee);
+    const { getTopicData } = this.props;
+    const { identifiers } = employee;
+    const { id: topicId } = topic;
+    this.setState({
+      selectedTopic: { ...topic },
+      selectedEmployee: employee,
+    });
+    getTopicData({ topicId, identifiers });
   };
 
   render() {
     const { classes } = this.props;
     const { employees, topics, topicData } = this.props;
+    const { selectedTopic, selectedEmployee } = this.state;
     return <div>
       <Header />
 
@@ -67,7 +77,8 @@ class Home extends React.Component {
         </Drawer>
 
         <main className={classes.content}>
-          {/*<SelectedUser />*/}
+          {topicData &&
+          <TopicView topic={selectedTopic} employee={selectedEmployee} topicData={topicData} />}
         </main>
       </div>
 
@@ -85,4 +96,5 @@ const mapStateToProps = ({ employees: employeesStore, topics: topicsStore }) => 
 export default connect(mapStateToProps, {
   getEmployees,
   getTopics,
+  getTopicData,
 })(withStyles(styles)(Home));

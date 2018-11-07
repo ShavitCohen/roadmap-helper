@@ -1,14 +1,11 @@
 const _ = require('lodash');
+const { authorization } = require('./../../utils/google-authorization');
 const { getSheetData, formatData } = require('../../utils/spreadshit-data-fetcher');
 const { topics } = require('../../dataConfig');
 
-const _filterDataByEmployee = ({ topic, sheetData, identifiers }) => {
-  const data = sheetData.find(dataRow => {
-    const identifierField = identifiers.find(identifier => identifier === dataRow[topic.employeeIdentifierIndex]);
-    return _.includes(identifiers, identifierField);
-  });
-  return data;
-};
+const _filterDataByEmployee = ({ topic, sheetData, identifiers }) =>
+  sheetData.filter(row =>
+    identifiers.find(identifier => identifier === row[topic.employeeIdentifierIndex]));
 
 const getTopics = async (req, res) => {
   const { group: userGroup, role: userRole } = req.auth;

@@ -23,10 +23,10 @@ export const setTopics = (topics) => {
   };
 };
 
-export const getTopicData = ({ topicId }) => {
+export const getTopicData = ({ topicId, identifiers }) => {
   return {
     type: `${TOPICS} ${AT.GET_TOPIC_DATA.API_REQUEST}`,
-    payload: profile,
+    payload: { identifiers },
     meta: {
       feature: TOPICS,
       sourceAction: AT.GET_TOPIC_DATA,

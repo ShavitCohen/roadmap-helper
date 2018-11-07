@@ -25,21 +25,23 @@ const getSheetData = async ({ topic, auth }) => {
 };
 
 const formatData = ({ sheetData, topic, userGroup, userRole }) => {
-  const { fields, title, sectionTitle } = topic;
+  const { fields, sectionTitle } = topic;
+  return sheetData.map(row => {
+    const formattedFields = fields.reduce((acc, field) => {
+      if (field.roles && !field.roles.includes(userRole)) return;
+      if (field.group && !field.group.includes(userGroup)) return;
 
-  const formattedFields = fields.reduce((acc, field) => {
-    if (field.roles && !field.roles.includes(userRole)) return;
-    if (field.group && !field.group.includes(userGroup)) return;
+      const { title, grid, index } = field;
+      acc.push({ title, grid, value: row[index] || 'N/A', index });
+      return acc;
+    }, []);
 
-    const { title, grid, index } = field;
-    //acc.push({ title:sheetData[], grid, value: sheetData[index], index });
-    return acc;
-  }, []);
+    return {
+      sectionTitle: row[sectionTitle.index],
+      fields: formattedFields,
+    };
+  });
 
-  return {
-    title: { ...sectionTitle, value: sheetData[sectionTitle.index] },
-    fields: formattedFields,
-  };
 };
 
 module.exports = {

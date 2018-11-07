@@ -6,7 +6,7 @@ export const INIT_STATE = {
   topics: [],
   loadTopicsError: false,
   loadTopicsDataError: false,
-  topicData: {},
+  topicData: '',
 };
 
 export default (state = INIT_STATE, action) => {

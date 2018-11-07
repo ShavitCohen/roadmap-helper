@@ -36,7 +36,7 @@ export const apiMiddleware = ({ dispatch, getState }) => (next) => async (action
     }
 
     if (method === 'get' && data && !isEmpty(data)) {
-      options.url = `${apiURL}/${url}?${qs.stringify(data)}`;
+      options.url = `${serverURL}/${url}?${qs.stringify(data)}`;
     }
 
     //reading from cache

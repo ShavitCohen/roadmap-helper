@@ -2,13 +2,14 @@ import React from 'react';
 
 import { Grid, Card, CardContent, Typography } from '@material-ui/core';
 
-const SelectedUserTab = ({ item }) => (
+const SelectedUserTab = ({ topicData, topic, employee }) => (
   <Grid container spacing={24}>
-    <Grid item xs={12}>
-      <Typography variant="headline" component="h1">{item.title}</Typography>
+    <Grid topic xs={12}>
+      <Typography variant="headline" component="h1">{employee.name}</Typography>
+      <Typography variant="headline" component="h1">{topic.title}</Typography>
     </Grid>
 
-    {item.sections.reverse().map(section => (
+    {topic.sections.reverse().map(section => (
       <Grid item key={section.title.value}>
         <Card>
           <CardContent>
