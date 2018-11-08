@@ -15,7 +15,7 @@ const plugins = [
 ];
 
 module.exports = {
-  entry: './src/employeesList.js',
+  entry: './src/index.js',
   output: {
     path: __dirname + '/dist',
     publicPath: '/',

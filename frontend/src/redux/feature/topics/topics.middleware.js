@@ -1,7 +1,7 @@
 import { replace } from 'react-router-redux';
 import store from 'store';
 import * as AT from './../../actionTypes';
-import { setLoadTopicsError, setTopics } from './topics.actions';
+import {setLoadTopicsError, setTopicData, setTopics} from './topics.actions';
 
 const { TOPICS } = AT;
 
@@ -22,7 +22,8 @@ export const topicsMiddleware = ({ dispatch, getState }) => (next) => (action) =
       break;
 
     case action.type.includes(`${TOPICS} ${AT.GET_TOPIC_DATA.SUCCESS}`): {
-
+        const { data } = action.payload;
+        dispatch(setTopicData(data))
     }
       break;
 
