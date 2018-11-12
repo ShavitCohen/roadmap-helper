@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --env development --devtool inline-source-map --open",
-    "build": "webpack --mode production"
+    "clean": "rimraf dist/*",
+    "build": "webpack --mode production --env production",
+    "start": "webpack-dev-server --hot --mode development --env development --devtool inline-source-map --open"
   },
   "babel": {
     "presets": [
@@ -19,11 +20,21 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "compression-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^0.28.5",
     "html-webpack-plugin": "^3.2.0",
+    "react-hot-loader": "^4.3.12",
+    "style-loader": "^0.18.2",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"

@@ -16,7 +16,7 @@ const Header = () => (
   <AppBar position="static">
     <Toolbar style={styles.toolbar}>
       <Typography variant="title" color="inherit" style={styles.font}>
-        עובדי טיקל
+         Octopus - All sss about Tikal
       </Typography>
     </Toolbar>
   </AppBar>

@@ -1,3 +1,4 @@
+/*
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -15,7 +16,9 @@ const plugins = [
 ];
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    './src/index.js'
+  ],
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
@@ -34,4 +37,10 @@ module.exports = {
   devServer: {
     contentBase: './dist',
   },
+};
+*/
+module.exports = env => {
+  const base = require('./webpack/webpack.base')(env);
+  const { tree, plugins } = require(`./webpack/webpack.${env}`);
+  return { ...base, ...tree, plugins: [...plugins, ...base.plugins] };
 };

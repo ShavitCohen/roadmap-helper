@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
@@ -9,14 +9,17 @@ import App from './App';
 
 const store = configureStore();
 
-const getApp = () =>
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
-  </Provider>
-;
+const rootEl = document.getElementById('octopus-app');
 
-render(getApp(), document.getElementById('app'));
+const render = () => {
+  const App = require('./App').default;
 
+  ReactDOM.render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </Provider>, rootEl);
+};
 
+render();

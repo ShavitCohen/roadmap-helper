@@ -1,24 +1,11 @@
 import React from 'react';
 import Home from './app/Home';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 import LogIn from './containers/Login';
-import store from 'store';
-
-const RestrictedRoute = ({ component: Component, ...rest }) =>
-  <Route
-    {...rest}
-    render={props =>
-      store.get('token')
-        ? <Component {...props} />
-        : <Redirect
-          to={{
-            pathname: '/app',
-            state: { from: props.location },
-          }}
-        />}
-  />;
 
 const App = ({ match }) => (
+
   <Switch>
 
     <Route
@@ -35,4 +22,4 @@ const App = ({ match }) => (
 
 );
 
-export default withRouter(App);
+export default withRouter(hot(module)(App));
